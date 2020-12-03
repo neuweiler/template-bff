@@ -44,6 +44,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- JWT Tokens -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
 		<!-- DB -->
 		<dependency>
 			<groupId>com.h2database</groupId>

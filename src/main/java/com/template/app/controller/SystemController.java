@@ -15,8 +15,11 @@ import java.util.Optional;
 @RequestMapping("/system")
 public class SystemController {
 
-	@Autowired
-	private SystemService systemService;
+	private final SystemService systemService;
+
+	public SystemController(SystemService systemService) {
+		this.systemService = systemService;
+	}
 
 	@PostMapping
 	public ApiResponse<SystemDto> create(@RequestBody SystemDto system) {

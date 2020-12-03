@@ -15,8 +15,11 @@ import java.util.Optional;
 @RequestMapping("/owner")
 public class OwnerController {
 
-	@Autowired
-	private OwnerService ownerService;
+	private final OwnerService ownerService;
+
+	public OwnerController(OwnerService ownerService) {
+		this.ownerService = ownerService;
+	}
 
 	@PostMapping
 	public ApiResponse<OwnerDto> create(@RequestBody OwnerDto owner) {

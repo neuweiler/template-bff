@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, updatable = false)
 	private int id;
 
 	private String firstName;
@@ -34,4 +35,12 @@ public class User {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	Owner owner;
+
+	public User(String userName, String password) {
+		this.userName = userName;
+		this.password = password;
+	}
+
+	public User() {
+	}
 }
