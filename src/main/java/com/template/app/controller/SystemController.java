@@ -3,7 +3,6 @@ package com.template.app.controller;
 import com.template.app.model.ApiResponse;
 import com.template.app.model.SystemDto;
 import com.template.app.service.SystemService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,22 +30,22 @@ public class SystemController {
 		return new ApiResponse<>(HttpStatus.OK.value(), "System list fetched successfully.", systemService.findAll());
 	}
 
-	@GetMapping("/{name}")
-	public ApiResponse<SystemDto> getOne(@PathVariable String name) {
-		Optional<SystemDto> systemOptional = systemService.findOne(name);
+	@GetMapping("/{id}")
+	public ApiResponse<SystemDto> getOne(@PathVariable int id) {
+		Optional<SystemDto> systemOptional = systemService.findOne(id);
 		return systemOptional.map(systemDto ->
 				new ApiResponse<>(HttpStatus.OK.value(), "System fetched successfully.", systemDto))
 				.orElseGet(() -> new ApiResponse<>(HttpStatus.NOT_FOUND.value(), "System not found.", null));
 	}
 
-	@PutMapping("/{name}")
+	@PutMapping
 	public ApiResponse<SystemDto> update(@RequestBody SystemDto systemDto) {
 		return new ApiResponse<>(HttpStatus.OK.value(), "System updated successfully.", systemService.update(systemDto));
 	}
 
-	@DeleteMapping("/{name}")
-	public ApiResponse<Void> delete(@PathVariable String name) {
-		systemService.delete(name);
+	@DeleteMapping("/{id}")
+	public ApiResponse<Void> delete(@PathVariable int id) {
+		systemService.delete(id);
 		return new ApiResponse<>(HttpStatus.OK.value(), "System deleted successfully.", null);
 	}
 }

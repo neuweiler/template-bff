@@ -31,22 +31,22 @@ public class UserController {
 		return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched successfully.", userService.findAll());
 	}
 
-	@GetMapping("/{userName}")
-	public ApiResponse<UserDto> getOne(@PathVariable String userName) {
-		Optional<UserDto> userOptional = userService.findOne(userName);
+	@GetMapping("/{id}")
+	public ApiResponse<UserDto> getOne(@PathVariable int id) {
+		Optional<UserDto> userOptional = userService.findOne(id);
 		return userOptional.map(userDto ->
 				new ApiResponse<>(HttpStatus.OK.value(), "User fetched successfully.", userDto))
 				.orElseGet(() -> new ApiResponse<>(HttpStatus.NOT_FOUND.value(), "User not found.", null));
 	}
 
-	@PutMapping("/{user}")
+	@PutMapping
 	public ApiResponse<UserDto> update(@RequestBody UserDto userDto) {
 		return new ApiResponse<>(HttpStatus.OK.value(), "User updated successfully.", userService.update(userDto));
 	}
 
-	@DeleteMapping("/{userName}")
-	public ApiResponse<Void> delete(@PathVariable String username) {
-		userService.delete(username);
+	@DeleteMapping("/{id}")
+	public ApiResponse<Void> delete(@PathVariable int id) {
+		userService.delete(id);
 		return new ApiResponse<>(HttpStatus.OK.value(), "User deleted successfully.", null);
 	}
 }

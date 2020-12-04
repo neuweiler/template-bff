@@ -3,7 +3,6 @@ package com.template.app.controller;
 import com.template.app.model.ApiResponse;
 import com.template.app.model.OwnerDto;
 import com.template.app.service.OwnerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,22 +30,22 @@ public class OwnerController {
 		return new ApiResponse<>(HttpStatus.OK.value(), "Owner list fetched successfully.", ownerService.findAll());
 	}
 
-	@GetMapping("/{name}")
-	public ApiResponse<OwnerDto> getOne(@PathVariable String name) {
-		Optional<OwnerDto> ownerOptional = ownerService.findOne(name);
+	@GetMapping("/{id}")
+	public ApiResponse<OwnerDto> getOne(@PathVariable int id) {
+		Optional<OwnerDto> ownerOptional = ownerService.findOne(id);
 		return ownerOptional.map(ownerDto ->
 				new ApiResponse<>(HttpStatus.OK.value(), "Owner fetched successfully.", ownerDto))
 				.orElseGet(() -> new ApiResponse<>(HttpStatus.NOT_FOUND.value(), "Owner not found.", null));
 	}
 
-	@PutMapping("/{name}")
+	@PutMapping
 	public ApiResponse<OwnerDto> update(@RequestBody OwnerDto ownerDto) {
 		return new ApiResponse<>(HttpStatus.OK.value(), "Owner updated successfully.", ownerService.update(ownerDto));
 	}
 
-	@DeleteMapping("/{name}")
-	public ApiResponse<Void> delete(@PathVariable String name) {
-		ownerService.delete(name);
+	@DeleteMapping("/{id}")
+	public ApiResponse<Void> delete(@PathVariable int id) {
+		ownerService.delete(id);
 		return new ApiResponse<>(HttpStatus.OK.value(), "Owner deleted successfully.", null);
 	}
 }

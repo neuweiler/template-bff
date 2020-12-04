@@ -9,8 +9,7 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(RuntimeException.class)
     public ApiResponse handleNotFoundException(RuntimeException ex) {
-        ApiResponse apiResponse = new ApiResponse(400, "Bad request", null);
-        return apiResponse;
+        return new ApiResponse(400, "Bad request", null);
     }
 
 }

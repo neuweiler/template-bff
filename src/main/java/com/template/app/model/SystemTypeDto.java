@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @JGlobalMap
 public class SystemTypeDto {
+	private int id;
 	private String code;
 	private String name;
 }

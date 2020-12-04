@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @JGlobalMap
 public class OwnerDto {
+	private int id;
 	private String name;
 	private boolean active;
 //	private List<SystemDto> systems;

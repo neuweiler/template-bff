@@ -11,9 +11,9 @@ public interface OwnerService {
 
 	List<OwnerDto> findAll();
 
-	Optional<OwnerDto> findOne(String name);
+	Optional<OwnerDto> findOne(int id);
 
 	OwnerDto update(OwnerDto ownerDto);
 
-	void delete(String name);
+	void delete(int id);
 }

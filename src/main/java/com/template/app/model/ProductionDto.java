@@ -9,6 +9,7 @@ import java.time.Instant;
 @Data
 @JGlobalMap
 public class ProductionDto {
+	private long id;
 	private BigDecimal value;
 	private int year;
 	private int month;

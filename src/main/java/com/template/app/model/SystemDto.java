@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Data
 @JGlobalMap
 public class SystemDto {
+	private int id;
 	private String name;
 	private LocalDate start;
 	private LocalDate end;

@@ -11,9 +11,9 @@ public interface SystemService {
 
 	List<SystemDto> findAll();
 
-	Optional<SystemDto> findOne(String name);
+	Optional<SystemDto> findOne(int id);
 
 	SystemDto update(SystemDto systemDto);
 
-	void delete(String name);
+	void delete(int id);
 }
